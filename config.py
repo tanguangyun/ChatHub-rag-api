@@ -58,7 +58,7 @@ DB_HOST = get_env_variable("DB_HOST", "db")
 DB_PORT = get_env_variable("DB_PORT", "5432")
 COLLECTION_NAME = get_env_variable("COLLECTION_NAME", "testcollection")
 ATLAS_MONGO_DB_URI = get_env_variable(
-    "ATLAS_MONGO_DB_URI", "mongodb://127.0.0.1:27018/LibreChat"
+    "ATLAS_MONGO_DB_URI", "mongodb://127.0.0.1:27018/ChatHub"
 )
 MONGO_VECTOR_COLLECTION = get_env_variable(
     "MONGO_VECTOR_COLLECTION", "vector_collection"
