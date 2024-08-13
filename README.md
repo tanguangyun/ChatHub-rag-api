@@ -3,9 +3,9 @@
 ## Overview
 This project integrates Langchain with FastAPI in an Asynchronous, Scalable manner, providing a framework for document indexing and retrieval, using PostgreSQL/pgvector.
 
-Files are organized into embeddings by `file_id`. The primary use case is for integration with [LibreChat](https://librechat.ai), but this simple API can be used for any ID-based use case.
+Files are organized into embeddings by `file_id`. The primary use case is for integration with [ChatHub](https://librechat.ai), but this simple API can be used for any ID-based use case.
 
-The main reason to use the ID approach is to work with embeddings on a file-level. This makes for targeted queries when combined with file metadata stored in a database, such as is done by LibreChat.
+The main reason to use the ID approach is to work with embeddings on a file-level. This makes for targeted queries when combined with file metadata stored in a database, such as is done by ChatHub.
 
 The API will evolve over time to employ different querying/re-ranking methods, embedding models, and vector stores.
 
@@ -39,7 +39,7 @@ uvicorn main:app
 The following environment variables are required to run the application:
 
 - `RAG_OPENAI_API_KEY`: The API key for OpenAI API Embeddings (if using default settings).
-    - Note: `OPENAI_API_KEY` will work but `RAG_OPENAI_API_KEY` will override it in order to not conflict with LibreChat setting.
+    - Note: `OPENAI_API_KEY` will work but `RAG_OPENAI_API_KEY` will override it in order to not conflict with ChatHub setting.
 - `RAG_OPENAI_BASEURL`: (Optional) The base URL for your OpenAI API Embeddings
 - `RAG_OPENAI_PROXY`: (Optional) Proxy for OpenAI API Embeddings
 - `VECTOR_DB_TYPE`: (Optional) select vector database type, default to `pgvector`.
@@ -71,10 +71,10 @@ The following environment variables are required to run the application:
     - ollama: "nomic-embed-text"
 - `RAG_AZURE_OPENAI_API_VERSION`: (Optional) Default is `2023-05-15`. The version of the Azure OpenAI API.
 - `RAG_AZURE_OPENAI_API_KEY`: (Optional) The API key for Azure OpenAI service.
-    - Note: `AZURE_OPENAI_API_KEY` will work but `RAG_AZURE_OPENAI_API_KEY` will override it in order to not conflict with LibreChat setting.
+    - Note: `AZURE_OPENAI_API_KEY` will work but `RAG_AZURE_OPENAI_API_KEY` will override it in order to not conflict with ChatHub setting.
 - `RAG_AZURE_OPENAI_ENDPOINT`: (Optional) The endpoint URL for Azure OpenAI service, including the resource.
     - Example: `https://YOUR_RESOURCE_NAME.openai.azure.com`.
-    - Note: `AZURE_OPENAI_ENDPOINT` will work but `RAG_AZURE_OPENAI_ENDPOINT` will override it in order to not conflict with LibreChat setting.
+    - Note: `AZURE_OPENAI_ENDPOINT` will work but `RAG_AZURE_OPENAI_ENDPOINT` will override it in order to not conflict with ChatHub setting.
 - `HF_TOKEN`: (Optional) if needed for `huggingface` option.
 - `OLLAMA_BASE_URL`: (Optional) defaults to `http://ollama:11434`.
 
@@ -90,7 +90,7 @@ ATLAS_MONGO_DB_URI=<mongodb+srv://...>
 MONGO_VECTOR_COLLECTION=<collection name>
 ```
 
-The `ATLAS_MONGO_DB_URI` could be the same or different from what is used by LibreChat. Even if it is the same, the `$MONGO_VECTOR_COLLECTION` collection needs to be a completely new one, separate from all collections used by LibreChat. In additional,  create a vector search index for  `$MONGO_VECTOR_COLLECTION`  with the following json:
+The `ATLAS_MONGO_DB_URI` could be the same or different from what is used by ChatHub. Even if it is the same, the `$MONGO_VECTOR_COLLECTION` collection needs to be a completely new one, separate from all collections used by ChatHub. In additional,  create a vector search index for  `$MONGO_VECTOR_COLLECTION`  with the following json:
 
 ```json
 {
